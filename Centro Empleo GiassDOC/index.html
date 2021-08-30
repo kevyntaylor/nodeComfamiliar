@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Centro Empleo Comfamiliar</title>
+	<link rel="stylesheet" type="text/css" href="https://select2.github.io/select2-bootstrap-theme/css/select2-bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-dark" style="background-color: #c72121; color: white;margin: 0;border: 6px solid #c72121;" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" style="color:white;font-size: 28px;"><b>Centro Empleo</b></a>
+  </div>
+</nav>
+
+<div class="page page-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="margin-top: 3%;">
+					<form id="my-form">
+							<h2>1.Subir nuevo archivo de excel</h2>
+					        <input type="file" name="file" class="form-control"><br>
+					        <button type="button" id="send" class="btn btn-success">Cargar Nuevo Excel</button>
+					</form>
+				</div>
+				<div class="col-md-12" style="margin-top: 5%;">
+					<h2>2.Ejecutar Proceso</h2>
+					<div class="col-md-6">
+						<label>Fecha corte inicial.</label>
+						<input type="date" class="form-control" id="fechasg">
+					</div>
+					<div class="col-md-12" style="margin-top: 2%;">
+						<button class="btn btn-danger btn-block" id="ejecutaractivos">Limpiar Activos</button>
+						<button class="btn btn-danger btn-block" id="ejecutar">Limpiar por fuera de rango</button>
+					</div>
+				</div>
+				<div class="col-md-12" style="margin-top: 5%;">
+					<h2>3.Tabla de resultado</h2>
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<label>Cargar Tablas.</label><br>
+							<button id="act" class="btn btn-success">Actualizar tablas</button>
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+					<div class="col-md-6">
+						<table class="table2exceldias table table-bordered bg-success">
+							<thead>
+								<th>Documento</th>
+								<th>Dias</th>
+							</thead>
+							<tbody id="tbdias">
+							</tbody>
+						</table>
+						<button class="exportToExceldias btn btn-success">Exportar Dias</button><br><br>
+					</div>
+					
+					<div class="col-md-6">
+						<table class="table2excel table table-bordered bg-danger">
+							<thead>
+								<th>Documento</th>
+								<th>Estado</th>
+							</thead>
+							<tbody id="tbactivos">
+							</tbody>
+						</table>
+						<button class="exportToExcel btn btn-success">Exportar Activos</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+
+<script src="/static/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="/static/bootstrap-theme.min.css">
+<script src="/static/bootstrap.min.js"></script>
+<script src="/static/jquery.dataTables.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="/static/jquery.table2excel.js"></script>
+<script>
+	$(function() {
+		$(".exportToExcel").click(function(e){
+			var table = $(this).prev('.table2excel');
+			if(table && table.length){
+				var preserveColors = (table.hasClass('table2excel_with_colors') ? true : false);
+				$(table).table2excel({
+					exclude: ".noExl",
+					name: "Excel Document Name",
+					filename: "reporteActivos " + new Date().toISOString() + ".xls",
+					fileext: ".xls",
+					exclude_img: true,
+					exclude_links: true,
+					exclude_inputs: true,
+					preserveColors: preserveColors
+				});
+			}
+		});
+
+
+		$(".exportToExceldias").click(function(e){
+			var table = $(this).prev('.table2exceldias');
+			if(table && table.length){
+				var preserveColors = (table.hasClass('table2excel_with_colors') ? true : false);
+				$(table).table2excel({
+					exclude: ".noExl",
+					name: "Reporte dias",
+					filename: "reporteDias " + new Date().toISOString() + ".xls",
+					fileext: ".xls",
+					exclude_img: true,
+					exclude_links: true,
+					exclude_inputs: true,
+					preserveColors: preserveColors
+				});
+			}
+		});
+		
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		$("#send").click(function () {
+			var datos= new FormData($("#my-form")[0]);
+			$.ajax({
+				url: 'http://172.16.0.41:3000/upload',
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				method: 'POST',
+				type: 'POST', // For jQuery < 1.9
+				success: function(data){
+					if(data.code != 200){
+					swal("Error", 
+							"Se encontraron errores en el archivo enviado", 
+						"error");
+					}else{
+					swal("Archivo Guardado", 
+							"Sus datos fueros cargados con éxito", 
+						"success");
+					}
+				}
+			});
+		});
+
+
+		$("#ejecutaractivos").click(function () {
+			$.ajax({
+				url: 'http://172.16.0.41:3000/descartarActivo',
+				cache: false,
+				contentType: false,
+				processData: false,
+				method: 'GET',
+				type: 'GET', // For jQuery < 1.9
+				success: function(data){
+					if(data.code != 200){
+					swal("Error", 
+							"Se encontraron errores en el archivo enviado", 
+						"error");
+					}else{
+					swal("Archivo Guardado", 
+							data.message, 
+						"success");
+					}
+				}
+			});
+		});
+		
+		
+		$("#ejecutar").click(function () {
+			if($("#fechasg").val() == ''){
+				swal("Error", 
+							"Debe ingresar primero fecha mes Sgte en paso #2", 
+						"error");
+				$("#fechasg").focus();	
+			}else{
+				$.ajax({
+					url: 'http://172.16.0.41:3000/descartarFilter',
+					data: 'fechasg=' + $("#fechasg").val(),
+					cache: false,
+					contentType: false,
+					processData: false,
+					method: 'GET',
+					type: 'GET', // For jQuery < 1.9
+					success: function(data){
+						if(data.code != 200){
+						swal("Error", 
+								"Se encontraron errores en el archivo enviado", 
+							"error");
+						}else{
+						swal("Archivo Guardado", 
+								data.message, 
+							"success");
+						}
+					}
+				});
+			}
+		});
+
+
+		$("#act").click(function () {
+			if($("#fechasg").val() == ''){
+				swal("Error", 
+							"Debe ingresar primero fecha mes Sgte en paso #2", 
+						"error");
+				$("#fechasg").focus();	
+			}else{
+				$.ajax({
+					url: 'http://172.16.0.41:3000/extraerData',
+					data: 'fechasg=' + $("#fechasg").val(),
+					cache: false,
+					contentType: false,
+					processData: false,
+					method: 'GET',
+					type: 'GET', // For jQuery < 1.9
+					success: function(data){
+						for(let item of data){
+							$("#tbdias").append('<tr><td>' + item.documento + '</td><td>' + item.dias + '</td></tr>');
+						}
+					}
+				});
+
+				$.ajax({
+					url: 'http://172.16.0.41:3000/extraerActive',
+					cache: false,
+					contentType: false,
+					processData: false,
+					method: 'GET',
+					type: 'GET', // For jQuery < 1.9
+					success: function(data){
+						for(let item of data){
+							$("#tbactivos").append('<tr><td>' + item.documento + '</td><td>ACTIVO</td></tr>');
+						}
+					}
+				});
+			}
+		});
+
+	});
+
+	
+</script>
+</body>
+</html>

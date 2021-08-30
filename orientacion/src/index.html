@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Orientacion Comfamiliar</title>
+	<link rel="stylesheet" type="text/css" href="https://select2.github.io/select2-bootstrap-theme/css/select2-bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-dark" style="background-color: #007bff; color: white;margin: 0;" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" style="color:white;" href="#"><b>Orientación</b></a>
+  </div>
+
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+  
+
+    <ul class="nav navbar-nav navbar-right">
+      <button class="btn btn-danger navbar-btn">Cargar Datos</button>
+      <button class="btn btn-success navbar-btn">Montar Nuevo Excel</button>
+    </ul>
+  </div>
+</nav>
+
+<div class="page page-main">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="margin-top: 5%;">
+					<table class="table" id="consultas">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">DESCRIPCIÓN</th>
+					      <th scope="col">ÁREA OCUPACIONAL</th>
+					      <th scope="col">GRUPO OCUPACIONAL</th>
+					      <th scope="col">DENOMINACIÓN</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion2" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area2" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo2" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones2">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion3" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area3" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo3" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones3">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion4" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area4" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo4" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones4">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion5" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area5" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo5" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones5">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$.fn.select2.defaults.set("theme", "bootstrap");
+        $(".locationMultiple").select2({
+            width: null
+        });
+
+        $.ajax({
+            type: 'GET',
+            url:  'http://172.16.0.42:3890/extraerDenominaciones',
+            success: function (data) {
+            	for(let item of data){
+            		var area = item['AREA_OCUPACIONAL'];
+            		var denominacion = item['DENOMINACION'];
+            		var grupo = item['GRUPO_OCUPACIONAL'];
+            		$('<option>').val(area).attr('data-grupo',grupo).text(denominacion).appendTo('.locationMultiple');
+            	}
+            }
+        });
+
+
+        $("#denominaciones").change(function () {
+        	$("#area").val($(this).val());
+        	$("#grupo").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),'');
+        });
+
+        $("#denominaciones2").change(function () {
+        	$("#area2").val($(this).val());
+        	$("#grupo2").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),2);
+        });
+
+        $("#denominaciones3").change(function () {
+        	$("#area3").val($(this).val());
+        	$("#grupo3").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),3);
+        });
+	    
+	    $("#denominaciones4").change(function () {
+        	$("#area4").val($(this).val());
+        	$("#grupo4").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),4);
+        });
+
+        $("#denominaciones5").change(function () {
+        	$("#area5").val($(this).val());
+        	$("#grupo5").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),5);
+        });
+	    
+	});
+
+	function getdescription(area,selector) {
+		$.ajax({
+            type: 'GET',
+            url:  'http://172.16.0.42:3890/extraerArea/'+area,
+            success: function (data) {
+            	$("#descripcion"+selector).html('');
+            	var value = data[0]['AREA_OCUPACIONAL'];
+            	var text = data[0]['NOMBRE'];
+            	$('<option>').val(value).text(text).appendTo('#descripcion'+selector);
+            }
+        });
+	}
+</script>
+</body>
+</html>

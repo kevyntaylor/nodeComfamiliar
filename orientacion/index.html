@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Orientacion Comfamiliar</title>
+	<link rel="stylesheet" type="text/css" href="https://select2.github.io/select2-bootstrap-theme/css/select2-bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-dark" style="background-color: #007bff; color: white;margin: 0;" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" style="color:white;" href="#"><b>Orientación</b></a>
+  </div>
+
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+  
+
+    <ul class="nav navbar-nav navbar-right">
+      <button class="btn btn-danger navbar-btn" id="cargardatos">Cargar Datos</button>
+    </ul>
+  </div>
+</nav>
+
+<div class="page page-main">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="margin-top: 5%;">
+					<form action='http://localhost:3000/upload' method="POST" enctype="multipart/form-data">
+							<h2>Subir nuevo archivo de excel</h2>
+					        <input type="file" name="file" class="form-control"><br>
+					        <button type="submit" class="btn btn-success">Cargar Nuevo Excel</button>
+					</form>
+				</div>
+				<div class="col-md-12" style="margin-top: 5%;">
+					<table class="table" id="consultas">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">DESCRIPCIÓN</th>
+					      <th scope="col">ÁREA OCUPACIONAL</th>
+					      <th scope="col">GRUPO OCUPACIONAL</th>
+					      <th scope="col">DENOMINACIÓN</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion2" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area2" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo2" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones2">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion3" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area3" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo3" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones3">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion4" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area4" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo4" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones4">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">
+					      	<select class="form-control" id="descripcion5" disabled="">
+					      		<option>Seleccione Descripción</option>
+					      	</select>
+					      </th>
+					      <td><input type="number" readonly="" id="area5" class="form-control"></td>
+					      <td><input type="number" readonly="" id="grupo5" class="form-control"></td>
+					      <td>
+					      	<select class="locationMultiple form-control" id="denominaciones5">
+					      		<option>Seleccione Denotación</option>
+					      	</select>
+					  	  </td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+</div>
+
+
+
+
+
+<div id="upload" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script src="/static/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="/static/bootstrap-theme.min.css">
+<script src="/static/bootstrap.min.js"></script>
+<script src="/static/jquery.dataTables.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$.fn.select2.defaults.set("theme", "bootstrap");
+        $(".locationMultiple").select2({
+            width: null
+        });
+
+        $.ajax({
+            type: 'GET',
+            url:  'http://172.16.0.41:3890/extraerDenominaciones',
+            success: function (data) {
+            	for(let item of data){
+            		var area = item['AREA_OCUPACIONAL'];
+            		var denominacion = item['DENOMINACION'];
+            		var grupo = item['GRUPO_OCUPACIONAL'];
+            		$('<option>').val(area).attr('data-grupo',grupo).text(denominacion).appendTo('.locationMultiple');
+            	}
+            }
+        });
+
+        $("#montar").click(function () {
+        	$("#upload").modal();
+        })
+
+
+        $("#cargardatos").click(function () {
+        	$.ajax({
+	            type: 'GET',
+	            url:  'http://172.16.0.41:3890/llenar',
+	            success: function (data) {
+	            	if(data['code']==200){
+	            		swal({   
+			                title: "Datos cargados",   
+			                text: "Tu base de datos fue actualizada con éxito",   
+			                timer: 10000,   
+			                showConfirmButton: false 
+			            });
+	            	}else{
+	            		swal({   
+			                title: "Error Datos",   
+			                text: "Tu base de datos no pudo ser actualizada",   
+			                timer: 10000,   
+			                showConfirmButton: false 
+			            });
+	            	}
+	            }
+	        });
+        });
+
+
+        $("#denominaciones").change(function () {
+        	$("#area").val($(this).val());
+        	$("#grupo").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),'');
+        });
+
+        $("#denominaciones2").change(function () {
+        	$("#area2").val($(this).val());
+        	$("#grupo2").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),2);
+        });
+
+        $("#denominaciones3").change(function () {
+        	$("#area3").val($(this).val());
+        	$("#grupo3").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),3);
+        });
+	    
+	    $("#denominaciones4").change(function () {
+        	$("#area4").val($(this).val());
+        	$("#grupo4").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),4);
+        });
+
+        $("#denominaciones5").change(function () {
+        	$("#area5").val($(this).val());
+        	$("#grupo5").val($(this).find(':selected').data('grupo'));
+        	getdescription($(this).val(),5);
+        });
+	    
+	});
+
+	function getdescription(area,selector) {
+		$.ajax({
+            type: 'GET',
+            url:  'http://172.16.0.41:3890/extraerArea/'+area,
+            success: function (data) {
+            	$("#descripcion"+selector).html('');
+            	var value = data[0]['AREA_OCUPACIONAL'];
+            	var text = data[0]['NOMBRE'];
+            	$('<option>').val(value).text(text).appendTo('#descripcion'+selector);
+            }
+        });
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Orientacion Comfamiliar</title>
+	<link rel="stylesheet" type="text/css" href="https://select2.github.io/select2-bootstrap-theme/css/select2-bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-dark" style="background-color: red; color: white;margin: 0;" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" style="color:white;" href="#"><b>MPCTOOLS (extension)</b></a>
+  </div>
+
+ 
+</nav>
+
+<div class="page page-main">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="margin-top: 5%;">
+					<form id="my-form">
+            <img src="https://img.icons8.com/color/452/microsoft-excel-2019--v1.png" width="200">
+							<h2>Subir nuevo archivo de excel</h2>
+					        <input type="file" id="upload-input" name="file" class="form-control"><br>
+					        <button type="button" id="send" class="btn btn-success">Cargar Nuevo Excel</button>
+					</form>
+				</div>
+        <div class="col-md-12" id="history" style="margin-top: 3%;">
+
+        </div>
+      </div>
+    </div>
+<script src="/static/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="/static/bootstrap-theme.min.css">
+<script src="/static/bootstrap.min.js"></script>
+<script src="/static/jquery.dataTables.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+       $("#send").click(function () {
+        
+          var datos= new FormData($("#my-form")[0]);
+          $.ajax({
+              url: 'http://localhost:3000/upload',
+              data: datos,
+              cache: false,
+              contentType: false,
+              processData: false,
+              method: 'POST',
+              type: 'POST', // For jQuery < 1.9
+              success: function(data){
+                  if(data.code != 200){
+                    swal("Error", 
+                            "Se encontraron errores en el archivo enviado", 
+                        "error");
+                  }else{
+                    swal("Archivo Guardado", 
+                            "Sus datos fueros cargados con éxito", 
+                        "success");
+                  }
+              }
+          });
+       });
+    });
+</script>
+</body>
+</html>
